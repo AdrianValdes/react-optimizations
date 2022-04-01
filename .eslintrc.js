@@ -19,12 +19,15 @@ module.exports = {
         "eslint:recommended",
         "google",
         "prettier",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
     ],
     plugins: ["import"],
     rules: {
         "indent": "off",
         "require-jsdoc": 0,
+        "no-unused-vars": "off",
+        "react-hooks/exhaustive-deps": "warn",
         "prettier/prettier": [
             "error",
             {

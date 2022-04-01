@@ -1,7 +1,8 @@
-export const returnUsers = async () => {
+export const returnUsers = async (amount) => {
     const usersPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve([1, 2, 3]);
+            const users = Array.from({length: amount}, (_, i) => i);
+            resolve(users);
         }, 100);
     });
     const data = await usersPromise;

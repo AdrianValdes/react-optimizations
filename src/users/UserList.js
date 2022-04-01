@@ -7,7 +7,7 @@ export const UserList = ({users}) => {
     const memoizedItems = useMemo(() => {
         return users.map((user) => {
             console.info("item rendered");
-            return <li key={user}>{user}</li>;
+            return <li key={user.id}>{user.name}</li>;
         });
     }, [users]);
 

@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {returnUsers} from "./api/fetchUsers";
 import {useForceRender} from "./hooks/useForceRerender";
-import {MemoizedUserList} from "./users/MemoizedUserList";
-import {UserList} from "./users/UserList";
+import {MemoizedList, List} from "./List";
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -28,8 +26,8 @@ function App() {
         fetchUsers();
     }, [amount]);
 
-    // if we pass userListModified as the value of the users prop, the MemoizedUserList component will always re-render
-    // const userListModified = users.map((user) => {...user, newProperty: "example"});
+    // if we pass listModified as the value of the users prop, the MemoizedList component will always re-render
+    // const listModified = users.map((user) => {...user, newProperty: "example"});
 
     return (
         <div>
@@ -44,9 +42,9 @@ function App() {
                 </form>
             </div>
             {/* Renders every time useForceRender runs */}
-            <UserList users={users} />
+            <List users={users} />
             {/* Renders just when amount changes */}
-            <MemoizedUserList users={users} />
+            <MemoizedList users={users} />
         </div>
     );
 }

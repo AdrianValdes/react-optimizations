@@ -1,13 +1,14 @@
 import {array} from "prop-types";
 import React, {useMemo} from "react";
+import {ListItem} from "./";
 
-export const UserList = ({users}) => {
+export const List = ({users}) => {
     console.info("usersList rendered");
 
     const memoizedItems = useMemo(() => {
         return users.map((user) => {
             console.info("item rendered");
-            return <li key={user.id}>{user.name}</li>;
+            return <ListItem key={user.id} user={user} />;
         });
     }, [users]);
 
@@ -29,6 +30,6 @@ export const UserList = ({users}) => {
     );
 };
 
-UserList.propTypes = {
+List.propTypes = {
     users: array.isRequired
 };

@@ -1,13 +1,14 @@
 import React, {useMemo} from "react";
 import {array} from "prop-types";
+import {ListItem} from "./";
 
-const UserList = ({users}) => {
-    console.info("MemoizedUserList rendered");
+const List = ({users}) => {
+    console.info("MemoizedList rendered");
 
     const memoizedItems = useMemo(() => {
         return users.map((user) => {
-            console.info("MemoizedUserList item rendered");
-            return <li key={user.id}>{user.name}</li>;
+            console.info("MemoizedList item rendered");
+            return <ListItem key={user.id} user={user} />;
         });
     }, [users]);
 
@@ -20,7 +21,7 @@ const UserList = ({users}) => {
              to determine whether your effect callback should be called.  */}
             <ul>{memoizedItems}</ul>
 
-            {/* Renders every time UserList renders */}
+            {/* Renders every time List renders */}
             {/* <ul>
                 {users.map((user) => {
                     console.log("item", user);
@@ -32,8 +33,8 @@ const UserList = ({users}) => {
 };
 
 // React.memo relies on "shallow equality" checks of the current props vs the previous props.
-export const MemoizedUserList = React.memo(UserList);
+export const MemoizedList = React.memo(List);
 
-UserList.propTypes = {
+List.propTypes = {
     users: array.isRequired
 };
